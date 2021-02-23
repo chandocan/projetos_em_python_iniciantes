@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 from tkinter import*
 class BIBLIAv1:
-    # é como se fose o construto o __init__
+    # é como se fosse o construto o __init__
     def __init__(self):
         sg.ChangeLookAndFeel('GreenTan') # tema da janela geral
         # ------ Menu Definition ------ # menu cosntrução
