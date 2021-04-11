@@ -10,7 +10,7 @@ class cadastro_1:
             [sg.Text('cadastra e-mail [s] ou [n]',font=fonte),sg.Input(key='sim_não',font=fonte,size=(3,1))],
             [sg.Text('digite e-mail p/cadatro ', font=fonte,size=(20,1)),sg.Input(key='email',font=fonte,size=(37,1))],
             [sg.Text('deseja busca [s] ou  [n] ?', font=fonte,size=(20,1)),sg.Input(key='sn',font=fonte,size=(3,1))],
-            [sg.Text('Qual e-mail Busca '      ,font=fonte),sg.Input(key='busca',font=fonte,size=(21,1))],
+            [sg.Text('Qual e-mail Busca '      ,font=fonte),sg.Input(key='busca_email',font=fonte,size=(21,1))],
             [sg.Button('ok'      ,font=fonte),sg.Button('sair',font=fonte)],
             [sg.Output(size=(37,10)),sg.Image(r'D:\lista de atividade 2020\projetos_meus\monteiro.png')], # quando for manda para professora vai ter comentar
             [sg.Text('remover e-mail [s] ou [n]',font=fonte,size=(20,1)),sg.Input(key='sim_não2',font=fonte,size=(3,1))],
@@ -28,22 +28,22 @@ class cadastro_1:
             if self.button == 'sair':
                 break
        
-                
+            
             d = str(self.values['sim_não']).lower()
-            email = str(self.values['email'])
-            busca =  str(self.values['busca'])
+            email = str(self.values['email']).strip()
+            busca =  str(self.values['busca_email']).strip() # strip remove espaço do começo e final da string usa com uma variável
             pergunta = str(self.values['sn'])
             pergunta2 = str(self.values['sim_não2'])
-            nome = str(self.values['email2_rv'])
+            nome = str(self.values['email2_rv']).strip()
             if d == 's' :
                 if email not in lista_email:
                     lista_email.append(email)
-            print('e-mail foi cadastrado')
+                    print('e-mail foi cadastrado')
             print(lista_email)
             if pergunta == 's' :
                 for i in lista_email:
                     if busca == i:
-                        print('e-mail cadastrado')
+                        print('e-mail esta cadastrado')
                         print(i)
                     if busca not in lista_email:
                         print('e-mail não cadastrado')
@@ -55,6 +55,7 @@ class cadastro_1:
                 for i in lista_email :
                     if nome == i:
                         lista_email.remove(nome)
+                        print('email foi removido com sucesso !')
 
 tela = cadastro_1()
 tela.inicial()
